@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DTOs\AppointmentDTO.cs" />
+    <Compile Include="DTOs\BedAllotmentDTO.cs" />
+    <Compile Include="DTOs\BedCategoryDTO.cs" />
+    <Compile Include="DTOs\BedDTO.cs" />
     <Compile Include="DTOs\MedicineDTO.cs" />
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\HospitalDTO.cs" />
@@ -58,6 +61,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppointMentService.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\BedService.cs" />
+    <Compile Include="Services\BedAllotmentService.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\HospitalService.cs" />
     <Compile Include="Services\MedicineService.cs" />

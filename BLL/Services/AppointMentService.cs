@@ -33,7 +33,7 @@ namespace BLL.Services
         public static List<AppointmentDTO> ShowAppointments(string name)
         {
                 var data = DataAccessFactory.DoctorAuthDataAccess().Doctors(name);
-                var appDoc = DataAccessFactory.NewAppointmentDataAccess().GetDoctorId(data.ID);
+                var appDoc = DataAccessFactory.NewAppointmentDataAccess().GetListOfId(data.ID);
                 var config = Service.OneTimeMapping<Appointment, AppointmentDTO>();
                 var mapper = new Mapper(config);             
                 return mapper.Map<List<AppointmentDTO>>(appDoc);          
