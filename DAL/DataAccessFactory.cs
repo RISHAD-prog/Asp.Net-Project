@@ -41,9 +41,13 @@ namespace DAL
         {
             return new TokenRepo();
         }
-        public static Appointment<Appointment,int> NewAppointmentDataAccess()
+        public static ListofID<Appointment,int> NewAppointmentDataAccess()
         {
             return new AppointmentRepo();
+        }
+        public static ListofID<Bed, int> BedListDataAccess()
+        {
+            return new BedRepo();
         }
         public static IRepo<PatientCheckUp, int,PatientCheckUp> PatientCheckUpDataAccess()
         {
@@ -52,6 +56,18 @@ namespace DAL
         public static IRepo<Medicine, int, Medicine> MedicineDataAccess()
         {
             return new MedicineRepo();
+        }
+        public static IRepo<BedAllotment, int, BedAllotment> BedAllotmentDataAccess()
+        {
+            return new BedAllotmentRepo();
+        }
+        public static IRepo<Bed, int, Bed> BedDataAccess()
+        {
+            return new BedRepo();
+        }
+        public static IRepo<BedCategory, int, BedCategory> BedCategoryDataAccess()
+        {
+            return new BedCategoryRepo();
         }
         public static CheckUp CheckupDataAccess()
         {

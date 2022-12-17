@@ -18,6 +18,9 @@ namespace DAL.EF
         public DbSet<Token> Tokens { get; set; }
         public DbSet<PatientCheckUp> patientCheckUps { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<BedCategory> BedCategories { get; set; }
+        public DbSet<Bed> Beds { get; set; }
+        public DbSet<BedAllotment> BedAllotments { get; set; }
 
         //public DbSet<HospitalDoctor> HospitalDoctors { get; set; }
         //public DbSet<HospitalStaff> HospitalStaffs { get; set; }

@@ -36,14 +36,16 @@ namespace DAL.EF.Models
         [Required]
         [StringLength(50)]
         public string Description { get; set; }
-
         public Patient()
         {
             /*this.HospitalPatients = new List<HospitalPatient>();
             this.DoctorPatients = new List<DoctorPatient>();*/
             this.Appointments = new List<Appointment>();
+            this.BedAllotments=new List<BedAllotment>();
         }
         public virtual List<Appointment> Appointments { get; set; }
+        public virtual List<BedAllotment> BedAllotments { get; set; }
+
         /*public virtual List<HospitalPatient> HospitalPatients { get; set; }
         public virtual List<DoctorPatient> DoctorPatients { get; set; }*/
     }

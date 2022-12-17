@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface Appointment<CLASS,RET>
+    public interface ListofID<CLASS,RET>
     {
-        List<CLASS> GetDoctorId(int id);
+        List<CLASS> GetListOfId(int id);
         
     }
 }

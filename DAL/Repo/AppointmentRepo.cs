@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class AppointmentRepo : Repo, IRepo<Appointment, int, Appointment>,Appointment<Appointment,int>
+    internal class AppointmentRepo : Repo, IRepo<Appointment, int, Appointment>,ListofID<Appointment,int>
     {
         public Appointment Add(Appointment obj)
         {
@@ -52,7 +52,7 @@ namespace DAL.Repo
             return null;
         }
 
-        public List<Appointment> GetDoctorId(int id)
+        public List<Appointment> GetListOfId(int id)
         {
             return db.Appointments.Where(x => x.DoctorID == id).ToList();
         }

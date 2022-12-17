@@ -55,6 +55,9 @@
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\HealthCareEntities.cs" />
     <Compile Include="EF\Models\Appointment.cs" />
+    <Compile Include="EF\Models\Bed.cs" />
+    <Compile Include="EF\Models\BedAllotment.cs" />
+    <Compile Include="EF\Models\BedCategory.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
     <Compile Include="EF\Models\Hospital.cs" />
     <Compile Include="EF\Models\Medicine.cs" />
@@ -62,7 +65,7 @@
     <Compile Include="EF\Models\PatientCheckUp.cs" />
     <Compile Include="EF\Models\Staff.cs" />
     <Compile Include="EF\Models\Token.cs" />
-    <Compile Include="Interfaces\Appointment.cs" />
+    <Compile Include="Interfaces\ListofID.cs" />
     <Compile Include="Interfaces\Auth.cs" />
     <Compile Include="Interfaces\CheckUp.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
@@ -70,12 +73,20 @@
     <Compile Include="Migrations\202212131350327_CreateSomeTables.designer.cs">
       <DependentUpon>202212131350327_CreateSomeTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212161912142_CreateBedCategoryandAllotments.cs" />
+    <Compile Include="Migrations\202212161912142_CreateBedCategoryandAllotments.designer.cs">
+      <DependentUpon>202212161912142_CreateBedCategoryandAllotments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AppointmentRepo.cs" />
+    <Compile Include="Repo\BedAllotmentRepo.cs" />
+    <Compile Include="Repo\BedCategoryRepo.cs" />
+    <Compile Include="Repo\BedRepo.cs" />
     <Compile Include="Repo\DoctorRepo.cs" />
     <Compile Include="Repo\HospitalRepo.cs" />
     <Compile Include="Repo\MedicineRepo.cs" />
+    <Compile Include="Repo\PatientBedRepo.cs" />
     <Compile Include="Repo\PatientCheckUpRepo.cs" />
     <Compile Include="Repo\PatientRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
@@ -89,6 +100,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202212131350327_CreateSomeTables.resx">
       <DependentUpon>202212131350327_CreateSomeTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212161912142_CreateBedCategoryandAllotments.resx">
+      <DependentUpon>202212161912142_CreateBedCategoryandAllotments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
