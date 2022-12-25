@@ -24,7 +24,7 @@ namespace DAL.EF.Models
         public string BedName { get; set; }
         [Required]
         public System.DateTime AllotmentDate { get; set; }
-        public Nullable<System.DateTime> DischargeDate { get; set; }
+        public System.DateTime DischargeDate { get; set; }
         public virtual Patient Patients { get; set; }
         public virtual Bed Beds { get; set; }
 

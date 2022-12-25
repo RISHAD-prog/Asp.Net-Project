@@ -12,28 +12,37 @@ namespace BLL.Services
 {
     public class BedAllotmentService
     {
-        public static BedAllotmentDTO AddAllotment(BedAllotmentDTO bedAllotment,int id)
+        public static BedAllotmentDTO AddAllotment(BedAllotmentDTO bedAllotment, int id)
         {
             var config = Service.Mapping<BedAllotmentDTO, BedAllotment>();
             var mapper = new Mapper(config);
             var bedinfo = DataAccessFactory.BedDataAccess().Get(id);
             var entity = new BedAllotment();
             entity.Id = bedAllotment.ID;
-            entity.PatientID=bedAllotment.PatientID;
+            entity.PatientID = bedAllotment.PatientID;
             entity.PatientName = bedAllotment.PatientName;
             entity.AllotmentDate = DateTime.Now;
-            entity.DischargeDate = null;
-            entity.BedID=bedinfo.Id;
-            entity.BedCategory=bedinfo.BedCategory;
-            entity.BedName=bedinfo.BedName;
-            var map = mapper.Map<BedAllotment>(entity);
-            var data = DataAccessFactory.BedAllotmentDataAccess().Add(map);
-            if(data!=null)
+            entity.DischargeDate = bedAllotment.DischargeDate;
+            entity.BedID = bedinfo.Id;
+            entity.BedCategory = bedinfo.BedCategory;
+            entity.BedName = bedinfo.BedName;
+            var bed = new Bed();
+            bed.Id = bedinfo.Id;
+            bed.BedCategoryID = bedinfo.BedCategoryID;
+            bed.BedCategory = bedinfo.BedCategory;
+            bed.BedName = bedinfo.BedName;
+            bed.Status = "Occupied";
+            BedService.EditBedStatus(bed);
+            //var map = mapper.Map<BedAllotment>(entity);
+            var data = DataAccessFactory.BedAllotmentDataAccess().Add(entity);
+            if (data != null)
             {
                 return mapper.Map<BedAllotmentDTO>(data);
             }
             return null;
+
         }
+
         public static List<BedAllotmentDTO> GetAllotment()
         {
             var config = Service.OneTimeMapping<BedAllotment, BedAllotmentDTO>();
@@ -52,8 +61,8 @@ namespace BLL.Services
         {
             var config = Service.Mapping<BedAllotmentDTO, BedAllotment>();
             var mapper = new Mapper(config);
-            var map=mapper.Map<BedAllotment>(bedAllotment);
-            var data=DataAccessFactory.BedAllotmentDataAccess().Update(map);
+            var map = mapper.Map<BedAllotment>(bedAllotment);
+            var data = DataAccessFactory.BedAllotmentDataAccess().Update(map);
             if (data != null)
             {
                 return mapper.Map<BedAllotmentDTO>(data);

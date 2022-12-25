@@ -59,23 +59,44 @@
     <Compile Include="EF\Models\BedAllotment.cs" />
     <Compile Include="EF\Models\BedCategory.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
-    <Compile Include="EF\Models\Hospital.cs" />
+    <Compile Include="EF\Models\Admin.cs" />
+    <Compile Include="EF\Models\DoctorSchedule.cs" />
+    <Compile Include="EF\Models\Labratory.cs" />
     <Compile Include="EF\Models\Medicine.cs" />
+    <Compile Include="EF\Models\NoticeBoard.cs" />
     <Compile Include="EF\Models\Patient.cs" />
     <Compile Include="EF\Models\PatientCheckUp.cs" />
     <Compile Include="EF\Models\Staff.cs" />
+    <Compile Include="EF\Models\TestList.cs" />
     <Compile Include="EF\Models\Token.cs" />
+    <Compile Include="Interfaces\AuthChecker.cs" />
+    <Compile Include="Interfaces\BillManagement.cs" />
+    <Compile Include="Interfaces\ErrorReturn.cs" />
     <Compile Include="Interfaces\ListofID.cs" />
     <Compile Include="Interfaces\Auth.cs" />
     <Compile Include="Interfaces\CheckUp.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Migrations\202212131350327_CreateSomeTables.cs" />
-    <Compile Include="Migrations\202212131350327_CreateSomeTables.designer.cs">
-      <DependentUpon>202212131350327_CreateSomeTables.cs</DependentUpon>
+    <Compile Include="Interfaces\QualicationCount.cs" />
+    <Compile Include="Interfaces\ScheduleChecker.cs" />
+    <Compile Include="Migrations\202212240636135_CreateTables.cs" />
+    <Compile Include="Migrations\202212240636135_CreateTables.designer.cs">
+      <DependentUpon>202212240636135_CreateTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202212161912142_CreateBedCategoryandAllotments.cs" />
-    <Compile Include="Migrations\202212161912142_CreateBedCategoryandAllotments.designer.cs">
-      <DependentUpon>202212161912142_CreateBedCategoryandAllotments.cs</DependentUpon>
+    <Compile Include="Migrations\202212241027048_CreateScheduleRltn.cs" />
+    <Compile Include="Migrations\202212241027048_CreateScheduleRltn.designer.cs">
+      <DependentUpon>202212241027048_CreateScheduleRltn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212241045250_Create_newColumn.cs" />
+    <Compile Include="Migrations\202212241045250_Create_newColumn.designer.cs">
+      <DependentUpon>202212241045250_Create_newColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212241346457_CreateRealtionWithCheckup.cs" />
+    <Compile Include="Migrations\202212241346457_CreateRealtionWithCheckup.designer.cs">
+      <DependentUpon>202212241346457_CreateRealtionWithCheckup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212250714170_CreateTestListTables.cs" />
+    <Compile Include="Migrations\202212250714170_CreateTestListTables.designer.cs">
+      <DependentUpon>202212250714170_CreateTestListTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,13 +105,18 @@
     <Compile Include="Repo\BedCategoryRepo.cs" />
     <Compile Include="Repo\BedRepo.cs" />
     <Compile Include="Repo\DoctorRepo.cs" />
-    <Compile Include="Repo\HospitalRepo.cs" />
+    <Compile Include="Repo\AdminRepo.cs" />
+    <Compile Include="Repo\DoctorScheduleRepo.cs" />
+    <Compile Include="Repo\ErrorRepo.cs" />
+    <Compile Include="Repo\LabratoryRepo.cs" />
     <Compile Include="Repo\MedicineRepo.cs" />
+    <Compile Include="Repo\NoticeBoardRepo.cs" />
     <Compile Include="Repo\PatientBedRepo.cs" />
     <Compile Include="Repo\PatientCheckUpRepo.cs" />
     <Compile Include="Repo\PatientRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
     <Compile Include="Repo\StaffRepo.cs" />
+    <Compile Include="Repo\TestRepo.cs" />
     <Compile Include="Repo\TokenRepo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,11 +124,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202212131350327_CreateSomeTables.resx">
-      <DependentUpon>202212131350327_CreateSomeTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212240636135_CreateTables.resx">
+      <DependentUpon>202212240636135_CreateTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202212161912142_CreateBedCategoryandAllotments.resx">
-      <DependentUpon>202212161912142_CreateBedCategoryandAllotments.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212241027048_CreateScheduleRltn.resx">
+      <DependentUpon>202212241027048_CreateScheduleRltn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212241045250_Create_newColumn.resx">
+      <DependentUpon>202212241045250_Create_newColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212241346457_CreateRealtionWithCheckup.resx">
+      <DependentUpon>202212241346457_CreateRealtionWithCheckup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212250714170_CreateTestListTables.resx">
+      <DependentUpon>202212250714170_CreateTestListTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

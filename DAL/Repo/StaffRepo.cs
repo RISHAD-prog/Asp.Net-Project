@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class StaffRepo :Repo, IRepo<Staff, int, Staff>
+    internal class StaffRepo :Repo, IRepo<Staff, int, Staff>, Auth<Staff, int>,AuthChecker<Staff, string>  
     {
         public Staff Add(Staff obj)
         {
@@ -35,6 +35,12 @@ namespace DAL.Repo
 
         }
 
+        public Staff Authenticate(string Email, string password)
+        {
+            var obj = db.Staffs.FirstOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
+            return obj;
+        }
+
         public List<Staff> Get()
         {
             return db.Staffs.ToList();
@@ -46,6 +52,7 @@ namespace DAL.Repo
             return data;
         }
 
+        
         public Staff Update(Staff obj)
         {
             var data= Get(obj.ID);
@@ -55,6 +62,18 @@ namespace DAL.Repo
                 return obj;
             }
             return null;
+        }
+
+        public Staff Doctors(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Staff GetChecker(string name)
+        {
+
+            var obj = db.Staffs.FirstOrDefault(x => x.Name.Equals(name));
+            return obj;
         }
     }
 }

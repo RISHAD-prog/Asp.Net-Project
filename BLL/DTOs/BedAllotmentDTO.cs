@@ -16,6 +16,6 @@ namespace BLL.DTOs
         public string BedCategory { get; set; }
         public string BedName { get; set; }
         public System.DateTime AllotmentDate { get; set; }
-        public Nullable<System.DateTime> DischargeDate { get; set; }
+        public System.DateTime DischargeDate { get; set; }
     }
 }
