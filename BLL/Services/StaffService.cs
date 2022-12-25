@@ -72,5 +72,16 @@ namespace BLL.Services
         }
 
 
+        //______________________________________________
+
+        public static StaffDTO GetChecker(string name)
+        {
+            var data = DataAccessFactory.StaffAuthCheckerDataAccess().GetChecker(name);
+            var config = Service.OneTimeMapping<Staff, StaffDTO>();
+            var mapper = new Mapper(config);
+            return mapper.Map<StaffDTO>(data);
+        }
+
+
     }
 }

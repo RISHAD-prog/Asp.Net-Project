@@ -17,11 +17,16 @@ namespace BLL.Services
             var config = Service.Mapping<DoctorDTO, Doctor>();
             var mapper=new Mapper(config);
             var data=mapper.Map<Doctor>(doctor);
-            var repo = DataAccessFactory.DoctorDataAccess().Add(data);
-            if (repo != null)
+            var check = DataAccessFactory.DoctorAuthDataAccess().Doctors(data.Name);
+            if(check == null)
             {
-                return mapper.Map<DoctorDTO>(repo);
+                var repo = DataAccessFactory.DoctorDataAccess().Add(data);
+                if (repo != null)
+                {
+                    return mapper.Map<DoctorDTO>(repo);
+                }
             }
+            
             return null;
         }
         public static List<DoctorDTO> Get()
@@ -68,5 +73,33 @@ namespace BLL.Services
             return null;
 
         }
+
+
+        //_______________________________________
+
+        public static DoctorDTO GetChecker(string name)
+        {
+            var data = DataAccessFactory.DoctorAuthCheckerDataAccess().GetChecker(name);
+            var config = Service.OneTimeMapping<Doctor, DoctorDTO>();
+            var mapper = new Mapper(config);
+            return mapper.Map<DoctorDTO>(data);
+        }
+
+
+        //______________________________________
+
+        public static List<DoctorDTO> GetDoctorCountByQualification(string qual)
+        {
+            var data = DataAccessFactory.DoctorQualicationCountDataAccess().GetQualicationCount(qual);
+ 
+            //var config= Service.OneTimeMapping<Doctor, DoctorDTO>();
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Doctor, DoctorDTO>();
+            });
+            var mapper = new Mapper(config);
+            return mapper.Map<List<DoctorDTO>>(data);
+        }
+
+
     }
 }

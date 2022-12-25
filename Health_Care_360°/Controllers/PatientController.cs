@@ -1,19 +1,23 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using Health_Care_360_.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Health_Care_360_.Controllers
 {
+    [EnableCors("*", "*", "*")]
+    //[Logged]
     public class PatientController : ApiController
     {
 
         [HttpPost]
-        [Route("api/patient/register")]
+        [Route("api/patient/add")]
         public HttpResponseMessage Register(PatientDTO patient)
         {
             try
@@ -33,7 +37,7 @@ namespace Health_Care_360_.Controllers
         }
 
         [HttpGet]
-        [Route("api/patient/get/all")]
+        [Route("api/patient/list")]
         public HttpResponseMessage GetAllPatients()
         {
             try
@@ -50,7 +54,7 @@ namespace Health_Care_360_.Controllers
         }
 
         [HttpGet]
-        [Route("api/patient/get/{id}")]
+        [Route("api/patient/{id}")]
         public HttpResponseMessage GetSinglePatient(int id)
         {
             try
@@ -105,9 +109,36 @@ namespace Health_Care_360_.Controllers
 
         //_________________________________________________________________________
 
+        [HttpGet]
+        [Route("api/patient/get/{email}")]
+        public HttpResponseMessage GetSinglePatientByEmail(string email)
+        {
+            try
+            {
+                var data = PatientService.GetChecker(email);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
 
 
-
+        }
+        [HttpGet]
+        [Route("api/Patient/Bill/{name}")]
+        public HttpResponseMessage TotalBills(string name)
+        {
+            try
+            {
+                var data = PatientService.GetBills(name);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Ambiguous,ex);
+            }
+        }
 
     }
 }

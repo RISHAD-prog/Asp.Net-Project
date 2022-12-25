@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Routing;
 
 namespace Health_Care_360_.Controllers
 {
+    [EnableCors("*","*","*")]
     public class BedController : ApiController
     {
         //.....For Adding Beds Category and Lists of Bed in Category
@@ -31,7 +33,20 @@ namespace Health_Care_360_.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-       
+        [Route("api/Bed/ShowCategory")]
+        [HttpGet]
+        public HttpResponseMessage Category()
+        {
+            try
+            {
+                var data = BedService.GetCategory();
+                return Request.CreateResponse(HttpStatusCode.Accepted, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
         [Route("api/Bed/Category/AddBeds")]
         [HttpGet]
         public HttpResponseMessage AddBedsInCategory()

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class PatientRepo :Repo, IRepo<Patient, int, Patient>
+    internal class PatientRepo :Repo, IRepo<Patient, int, Patient>, Auth<Patient, int>,AuthChecker<Patient, string>
     {
         public Patient Add(Patient obj)
         {
@@ -32,6 +32,13 @@ namespace DAL.Repo
             return false;
         }
 
+
+        public Patient Authenticate(string Email, string password)
+        {
+            var obj = db.Patients.FirstOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
+            return obj;
+        }
+
         public List<Patient> Get()
         {
             return db.Patients.ToList();
@@ -51,6 +58,17 @@ namespace DAL.Repo
                 return obj;
             }
             return null;
+        }
+
+        public Patient Doctors(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Patient GetChecker(string name)
+        {
+            return db.Patients.FirstOrDefault(x => x.Name.Equals(name));
+           
         }
     }
 }

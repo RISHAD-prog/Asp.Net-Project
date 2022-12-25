@@ -14,5 +14,6 @@ namespace BLL.DTOs
         public int BedCategoryID { get; set; }
         public string BedCategory { get; set; }
         public string BedName { get; set; }
+        public string Status { get; set; }
     }
 }

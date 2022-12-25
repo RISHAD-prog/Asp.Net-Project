@@ -1,19 +1,23 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using Health_Care_360_.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Health_Care_360_.Controllers
 {
+    [EnableCors("*", "*", "*")]
+    //[Logged]
     public class StaffController : ApiController
     {
 
         [HttpPost]
-        [Route("api/staff/register")]
+        [Route("api/staff/add")]
         public HttpResponseMessage Register(StaffDTO staffDTO)
         {
             try
@@ -36,7 +40,7 @@ namespace Health_Care_360_.Controllers
 
 
         [HttpGet]
-        [Route("api/staff/get/all")]
+        [Route("api/staff/list")]
         public HttpResponseMessage GetAllStaffs()
         {
             try
@@ -53,16 +57,19 @@ namespace Health_Care_360_.Controllers
         }
 
         [HttpGet]
-        [Route("api/staff/get/{id}")]
+        [Route("api/staff/{id}")]
         public HttpResponseMessage GetSingleStaff(int id)
         {
             try
             {
                 var data = StaffService.Get(id);
+             
+                
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
             {
+                //var err = "No staff found";
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
 
@@ -106,6 +113,22 @@ namespace Health_Care_360_.Controllers
         }
 
 
+        [HttpGet]
+        [Route("api/staff/get/{email}")]
+        public HttpResponseMessage GetSingleStaffByEmail(string email)
+        {
+            try
+            {
+                var data = StaffService.GetChecker(email);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+
+
+        }
 
 
 
@@ -127,6 +150,85 @@ namespace Health_Care_360_.Controllers
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.NoContent,ex);
+            }
+        }
+        //--------------Manipulate Lab Tests----------
+        [HttpGet]
+        [Route("api/Staff/SeeTestList")]
+        public HttpResponseMessage TestLists()
+        {
+            try
+            {
+                var data = ListService.Get();
+                return Request.CreateResponse(HttpStatusCode.OK,data);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Ambiguous, ex);
+            }
+        }
+        [HttpPost]
+        [Route("api/Staff/AddTestList")]
+        public HttpResponseMessage AddTestList(TestListDTO testList)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var data = ListService.Add(testList);
+                    return Request.CreateResponse(HttpStatusCode.OK, data);
+                }
+                return Request.CreateResponse(HttpStatusCode.Forbidden,ModelState);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+        [HttpGet]
+        [Route("api/Staff/SeeLabTest")]
+        public HttpResponseMessage SeeLabratoryTests()
+        {
+            try
+            {
+                var data = LabratoryService.Get();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Ambiguous, ex);
+            }
+        }
+        [HttpGet]
+        [Route("api/Staff/AddLabTest/{id}")]
+        public HttpResponseMessage AddLabratoryTests()
+        {
+            try
+            {
+                var data = PatientService.Get();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Ambiguous, ex);
+            }
+        }
+        [HttpPost]
+        [Route("api/Staff/AddLabTest/{id}")]
+        public HttpResponseMessage AddLabratoryTests(LabratoryDTO labratory,int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var data = LabratoryService.Add(labratory,id) ;
+                    return Request.CreateResponse(HttpStatusCode.OK, data);
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Ambiguous, ex);
             }
         }
     }
