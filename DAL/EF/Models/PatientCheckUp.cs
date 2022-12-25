@@ -11,6 +11,8 @@ namespace DAL.EF.Models
     public class PatientCheckUp
     {
         public int ID { set; get; }
+        [ForeignKey("Appointments")]
+        public int AppointmentID { set; get; }
         [Required]
         public int PatientID { set; get; }
         [Required]
@@ -36,5 +38,6 @@ namespace DAL.EF.Models
         [Required]
         [StringLength(100)]
         public string BeforeMeal {set;get;}
+        public virtual Appointment Appointments { get; set; }
     }
 }

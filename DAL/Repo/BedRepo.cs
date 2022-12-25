@@ -40,6 +40,11 @@ namespace DAL.Repo
             return db.Beds.Find(id);
         }
 
+        public Bed GetCategory(string category)
+        {
+            return db.Beds.FirstOrDefault(X => X.BedCategory.Equals(category));
+        }
+
         public List<Bed> GetListOfId(int id)
         {
             return db.Beds.Where(X=>X.BedCategoryID.Equals(id)).ToList();

@@ -13,11 +13,12 @@ using System.Xml.Linq;
 namespace Health_Care_360_.Controllers
 {
     [EnableCors("*","*","*")]
+   // [Logged]
     public class DoctorController : ApiController
     {
         
         [HttpPost]
-        [Route("api/doctor/register")]
+        [Route("api/doctor/add")]
         public HttpResponseMessage Register(DoctorDTO doctor)
         {
             try
@@ -40,7 +41,7 @@ namespace Health_Care_360_.Controllers
 
 
         [HttpGet]
-        [Route("api/doctor/get/all")]
+        [Route("api/doctor/list")]
         public HttpResponseMessage GetAllDoctors()
         {
             try
@@ -57,7 +58,7 @@ namespace Health_Care_360_.Controllers
         }
 
         [HttpGet]
-        [Route("api/doctor/get/{id}")]
+        [Route("api/doctor/got/{id}")]
         public HttpResponseMessage GetSingleDoctor(int id)
         {
             try
@@ -109,9 +110,27 @@ namespace Health_Care_360_.Controllers
 
         }
 
+       
 
 
 
+
+        [HttpGet]
+        [Route("api/doctor/get/{email}")]
+        public HttpResponseMessage GetSingleDoctorByEmail(string email)
+        {
+            try
+            {
+                var data = DoctorService.GetChecker(email);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+
+
+        }
 
 
 
@@ -141,14 +160,14 @@ namespace Health_Care_360_.Controllers
 
 
         }
-        [Logged]
+        //[Logged]
         [HttpGet]
         [Route("api/Doctor/{name}")]
         public HttpResponseMessage AllAppointment(string name)
         {
             try
             {
-                var data = AppointMentService.ShowAppointments(name);
+                var data = DoctorScheduleService.Get(name);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch(Exception ex)
@@ -158,14 +177,29 @@ namespace Health_Care_360_.Controllers
                 
             
         }
-        [Logged]
+        //[Logged]
+        [Route("api/Doctor/Appointment/{id}")]
         [HttpGet]
-        [Route("api/Doctor/{name}/{id}")]
-        public HttpResponseMessage AddAppointment(int id)
+        public HttpResponseMessage GetAppointments(int id)
         {
             try
             {
-                var data = PatientService.Get(id);
+                var data = AppointMentService.ShowAppointments(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, ex);
+            }
+        }
+        //[Logged]
+        [HttpGet]
+        [Route("api/Doctor/AddAppointment/{name}")]
+        public HttpResponseMessage AddAppointment()
+        {
+            try
+            {
+                var data = PatientService.Get();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -175,16 +209,16 @@ namespace Health_Care_360_.Controllers
 
 
         }
-        [Logged]
+        //[Logged]
         [HttpPost]
-        [Route("api/Doctor/{name}/{id}")]
-        public HttpResponseMessage AddAppointment(AppointmentDTO appointment,string name)
+        [Route("api/Doctor/AddAppointment/{name}")]
+        public HttpResponseMessage AddAppointment(AppointmentDTO appointment, string name)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var data = AppointMentService.Add(appointment,name);
+                    var data = AppointMentService.Add(appointment, name);
                     return Request.CreateResponse(HttpStatusCode.OK, data);
                 }
                 return Request.CreateResponse(HttpStatusCode.NoContent);
@@ -193,10 +227,9 @@ namespace Health_Care_360_.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, ex);
             }
-            
-            
+
+
         }
-        
-        
+
     }
 }

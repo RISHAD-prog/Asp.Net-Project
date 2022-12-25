@@ -35,14 +35,18 @@ namespace DAL.EF.Models
         public string BloodGroup { get; set; }
         [Required]
         [StringLength(50)]
-        public string Description { get; set; }
+        public string Disease { get; set; }
+        [Required]
+        public int Bill { get; set; }
         public Patient()
         {
             /*this.HospitalPatients = new List<HospitalPatient>();
             this.DoctorPatients = new List<DoctorPatient>();*/
             this.Appointments = new List<Appointment>();
             this.BedAllotments=new List<BedAllotment>();
+            this.Labratories = new List<Labratory>();
         }
+        public virtual List<Labratory> Labratories { get; set; }
         public virtual List<Appointment> Appointments { get; set; }
         public virtual List<BedAllotment> BedAllotments { get; set; }
 

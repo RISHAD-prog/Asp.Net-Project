@@ -15,6 +15,8 @@ namespace BLL.DTOs
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Qualification { get; set; }
+        public string VisitingHours { get; set; }
+        public string AppointmentFee { get; set; }
 
     }
 }

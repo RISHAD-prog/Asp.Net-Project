@@ -27,6 +27,10 @@ namespace DAL.EF.Models
 
         public string Address { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Salary { get; set; }
+
 
         /*public Staff()
         {
