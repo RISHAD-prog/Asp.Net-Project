@@ -62,3 +62,43 @@ E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\Health_Car
 E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 E:\Project\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.CreateSomeTables.resources
 E:\Project\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.CreateBedCategoryandAllotments.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\DAL.dll.config
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\DAL.dll
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\DAL.pdb
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\EntityFramework.dll
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\EntityFramework.xml
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.CreateSomeTables.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.CreateBedCategoryandAllotments.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.dll
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.pdb
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.AddSomeColumns.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.TokenTableEmailSet.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.HospitalNameChangeToAdmin.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.TokenTypeAdd.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.UsernameToEmail.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.AddNoticeBoardTable.resources
+E:\Advanced Programming With .Net\Final\Health_Care_360_Final_Project\New folder\Health_Care-_360-_Back_End\DAL\obj\Debug\DAL.Migrations.UpdateAdminTable.resources
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\DAL.dll.config
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\DAL.dll
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\DAL.pdb
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\EntityFramework.dll
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\EntityFramework.xml
+E:\.net\Health_Care_360_New_Repo\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.dll
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.pdb
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateTables.resources
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateScheduleRltn.resources
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.Create_newColumn.resources
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateRealtionWithCheckup.resources
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateTestListTables.resources

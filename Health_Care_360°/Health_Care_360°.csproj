@@ -102,8 +102,10 @@
     <Compile Include="Controllers\AppointMentController.cs" />
     <Compile Include="Controllers\BedController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
-    <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DoctorScheduleController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NoticeBoardController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">

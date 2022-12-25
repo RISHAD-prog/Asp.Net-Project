@@ -63,5 +63,46 @@ namespace BLL.Services
             return null;
 
         }
+
+        //__________________________________________
+
+
+        public static PatientDTO GetChecker(string name)
+        {
+            var data = DataAccessFactory.PatientAuthCheckerDataAccess().GetChecker(name);
+            var config = Service.OneTimeMapping<Patient, PatientDTO>();
+            var mapper = new Mapper(config);
+            return mapper.Map<PatientDTO>(data);
+        }
+        public static PatientDTO GetBills(string name)
+        {
+            var config = Service.Mapping<Patient, PatientDTO>();
+            var mapper = new Mapper(config);
+            var totalbill = 0;
+            var data = DataAccessFactory.BillDataAccess().GetBills(name);
+            foreach(var bill in data)
+            {
+                var getdata = DataAccessFactory.TestDataAccess().Get(bill.TestID);
+                totalbill = totalbill + getdata.TestFee;
+            }
+            var check = DataAccessFactory.PatientAuthCheckerDataAccess().GetChecker(name);
+            var patient = new Patient();
+            patient.ID = check.ID;  
+            patient.Name =check.Name ;
+            patient.Email=check.Email;
+            patient.Phone=check.Phone;
+            patient.Address = check.Address;
+            patient.BloodGroup = check.BloodGroup;
+            patient.Password = check.Password;
+            patient.Disease = check.Disease;
+            patient.Dob = check.Dob;
+            patient.Bill = totalbill;
+            var patientupdateData=DataAccessFactory.PatientDataAccess().Update(patient);
+            if (patientupdateData != null)
+            {
+                return mapper.Map<PatientDTO>(patientupdateData);
+            }
+            return null;
+        }
     }
 }

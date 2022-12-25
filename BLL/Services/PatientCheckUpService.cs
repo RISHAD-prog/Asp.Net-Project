@@ -17,22 +17,37 @@ namespace BLL.Services
             var cfg = Service.Mapping<PatientCheckUpDTO, PatientCheckUp>();
             var mapper = new Mapper(cfg);
             var data = DataAccessFactory.AppointmentDataAccess().Get(id);
-            var check = new PatientCheckUp();
-            check.PatientID=data.PatientID;
-            check.PatientName=data.PatientName;
-            check.DoctorID=data.DoctorID;
-            check.DoctorName = data.DoctorName;
-            check.CheckUpDate = DateTime.Now;
-            check.Symptoms = patientCheck.Symptoms;
-            check.MedicineName=patientCheck.MedicineName;
-            check.No_Of_Days = patientCheck.No_Of_Days;
-            check.BeforeMeal = patientCheck.BeforeMeal;
-            check.MedTaking_Time = patientCheck.MedTaking_Time;
-            var access = DataAccessFactory.PatientCheckUpDataAccess().Add(check);
-            if(access != null)
+            if(data!= null)
             {
-                return mapper.Map<PatientCheckUpDTO>(access);
+                var check = new PatientCheckUp();
+                check.AppointmentID = data.Id;
+                check.PatientID = data.PatientID;
+                check.PatientName = data.PatientName;
+                check.DoctorID = data.DoctorID;
+                check.DoctorName = data.DoctorName;
+                check.CheckUpDate = data.AppointCreateDate;
+                check.Symptoms = patientCheck.Symptoms;
+                check.MedicineName = patientCheck.MedicineName;
+                check.No_Of_Days = patientCheck.No_Of_Days;
+                check.BeforeMeal = patientCheck.BeforeMeal;
+                check.MedTaking_Time = patientCheck.MedTaking_Time;
+                var addappointment = new Appointment();
+                addappointment.Id = data.Id;
+                addappointment.ScheduleID = data.ScheduleID;
+                addappointment.PatientID = data.PatientID;
+                addappointment.PatientName = data.PatientName;
+                addappointment.AppointCreateDate = data.AppointCreateDate;
+                addappointment.DoctorID = data.DoctorID;
+                addappointment.DoctorName = data.DoctorName;
+                addappointment.Status = "Active";
+                DataAccessFactory.AppointmentDataAccess().Update(addappointment);
+                var access = DataAccessFactory.PatientCheckUpDataAccess().Add(check);
+                if (access != null)
+                {
+                    return mapper.Map<PatientCheckUpDTO>(access);
+                }
             }
+            
             return null;
         }
         

@@ -32,7 +32,7 @@ namespace DAL.Repo
 
         public Token Get(string id)
         {
-            return db.Tokens.FirstOrDefault(t => t.TKey.Equals(id));
+            return db.Tokens.FirstOrDefault(t => t.TKey.Equals(id) /*&& t.ExpirationTime.Equals(null)*/);
         }
 
         public Token Update(Token obj)

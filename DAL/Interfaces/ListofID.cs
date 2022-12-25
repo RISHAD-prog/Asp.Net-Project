@@ -10,6 +10,6 @@ namespace DAL.Interfaces
     public interface ListofID<CLASS,RET>
     {
         List<CLASS> GetListOfId(int id);
-        
+        CLASS GetCategory(string category);
     }
 }

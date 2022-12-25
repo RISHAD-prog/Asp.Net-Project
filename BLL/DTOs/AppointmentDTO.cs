@@ -8,6 +8,7 @@ namespace BLL.DTOs
 {
     public class AppointmentDTO
     {
+        public int ScheduleID { get; set; }
         public int PatientID { get; set; }
         public string PatientName { get; set; }
         public System.DateTime AppointCreateDate { get; set; }

@@ -30,15 +30,25 @@ namespace DAL.EF.Models
         [StringLength(50)]
         public string Qualification { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string VisitingHours { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string AppointmentFee { get; set; }
+
 
         public Doctor() 
         {
             /*this.HospitalDoctors= new List<HospitalDoctor>();
             this.DoctorPatients= new List<DoctorPatient>();*/
-            this.Appointments = new List<Appointment>();
+            //this.Appointments = new List<Appointment>();
             //this.PatientCheckUps = new List<PatientCheckUp>();
+            this.DoctorSchedules= new List<DoctorSchedule>();
         }
-        public virtual List<Appointment> Appointments { get; set; }
+        public virtual List<DoctorSchedule> DoctorSchedules { get; set; }
+        //public virtual List<Appointment> Appointments { get; set; }
         //public virtual List<PatientCheckUp> PatientCheckUps { get; set; }
         //public virtual List<HospitalDoctor> HospitalDoctors { get; set; }
         //public virtual List<DoctorPatient> DoctorPatients { get; set; }
