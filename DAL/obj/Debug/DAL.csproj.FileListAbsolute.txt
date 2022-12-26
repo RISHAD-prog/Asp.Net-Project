@@ -102,3 +102,5 @@ E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateScheduleRltn
 E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.Create_newColumn.resources
 E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateRealtionWithCheckup.resources
 E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateTestListTables.resources
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateColumninToken.resources
+E:\.net\Health_Care_360_New_Repo\DAL\obj\Debug\DAL.Migrations.CreateBedFeeColumn.resources

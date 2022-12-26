@@ -126,8 +126,8 @@ namespace Health_Care_360_.Controllers
 
         }
         [HttpGet]
-        [Route("api/Patient/Bill/{name}")]
-        public HttpResponseMessage TotalBills(string name)
+        [Route("api/Patient/TestBill/{name}")]
+        public HttpResponseMessage TestBill(string name)
         {
             try
             {
@@ -137,6 +137,20 @@ namespace Health_Care_360_.Controllers
             catch(Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.Ambiguous,ex);
+            }
+        }
+        [HttpGet]
+        [Route("api/Patient/BedBill/{name}")]
+        public HttpResponseMessage BedBill(string name)
+        {
+            try
+            {
+                var data = PatientService.GetBillsBed(name);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Ambiguous, ex);
             }
         }
 

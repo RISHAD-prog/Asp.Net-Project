@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class BedAllotmentRepo : Repo, IRepo<BedAllotment, int, BedAllotment>
+    internal class BedAllotmentRepo : Repo, IRepo<BedAllotment, int, BedAllotment>,Allotment<BedAllotment,string>
     {
         public BedAllotment Add(BedAllotment obj)
         {
@@ -38,6 +38,11 @@ namespace DAL.Repo
         public BedAllotment Get(int id)
         {
             return db.BedAllotments.Find(id);
+        }
+
+        public BedAllotment GetData(string name)
+        {
+            return db.BedAllotments.FirstOrDefault(X => X.PatientName.Equals(name));
         }
 
         public BedAllotment Update(BedAllotment obj)

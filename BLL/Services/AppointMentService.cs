@@ -17,10 +17,11 @@ namespace BLL.Services
             var config = Service.Mapping<AppointmentDTO, Appointment>();
             var mapper = new Mapper(config);
             var data = DataAccessFactory.DoctorAuthSchCheckerDataAccess().Schedule(name);
+            var patientData = DataAccessFactory.PatientAuthCheckerDataAccess().GetChecker(appointment.PatientName);
             var allappointment = DataAccessFactory.NewAppointmentDataAccess().GetListOfId(data.Id);
             if(data != null && allappointment.Count()<10)
             {
-                var data1 = DateTime.Now;
+                var data1 = appointment.AppointCreateDate;
                 var data2 = data.CheckUpTimeStart;
                 var data3 = data.CheckUpTimeEnd;
                 var check1 = DateTime.Compare(data1 , data2);
@@ -29,9 +30,9 @@ namespace BLL.Services
                 {
                     var addappointment = new Appointment();
                     addappointment.ScheduleID = data.Id;
-                    addappointment.PatientID = appointment.PatientID;
+                    addappointment.PatientID = patientData.ID;
                     addappointment.PatientName = appointment.PatientName;
-                    addappointment.AppointCreateDate = DateTime.Now;
+                    addappointment.AppointCreateDate = appointment.AppointCreateDate;
                     addappointment.DoctorID = data.DoctorID;
                     addappointment.DoctorName = data.DoctorName;
                     addappointment.Status = "Inactive";

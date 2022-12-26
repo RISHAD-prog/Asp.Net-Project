@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Health_Care_360_.Controllers
 {
+    [EnableCors("*","*","*")]
     public class AppointMentController : ApiController
     {
         //[Logged]
@@ -48,13 +50,21 @@ namespace Health_Care_360_.Controllers
             }
             
         }
-        [Logged]
+        //[Logged]
         [HttpGet]
         [Route("api/AppointMent/PrescriptionDetails/{id}")]
         public HttpResponseMessage SeePatientCheckupDetails(int id)
         {
-            var data = PatientCheckUpService.Get(id);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
+            try
+            {
+                var data = PatientCheckUpService.Get(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+            
         }
     }
 }

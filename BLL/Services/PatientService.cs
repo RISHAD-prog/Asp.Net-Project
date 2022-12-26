@@ -16,6 +16,11 @@ namespace BLL.Services
         {
             var config = Service.Mapping<PatientDTO, Patient>();
             var mapper = new Mapper(config);
+            var check=DataAccessFactory.PatientAuthDataAccess().Authenticate(patient.Name,patient.Password);
+            if (check != null)
+            {
+                return null;
+            }
             var data = mapper.Map<Patient>(patient);
             var access = DataAccessFactory.PatientDataAccess().Add(data);
             if (access != null)
@@ -102,6 +107,37 @@ namespace BLL.Services
             {
                 return mapper.Map<PatientDTO>(patientupdateData);
             }
+            return null;
+        }
+        public static PatientDTO GetBillsBed(string name)
+        {
+            var config = Service.Mapping<Patient, PatientDTO>();
+            var mapper = new Mapper(config);
+            var totalbill = 0;
+            var patientData = DataAccessFactory.GetAllotmentOFPatient().GetData(name);
+            var bednameData = DataAccessFactory.GetAllotmentOFBed().GetData(patientData.BedID);
+            if(bednameData != null)
+            {
+                totalbill = totalbill + bednameData.BedFee;
+                var check = DataAccessFactory.PatientAuthCheckerDataAccess().GetChecker(name);
+                var patient = new Patient();
+                patient.ID = check.ID;
+                patient.Name = check.Name;
+                patient.Email = check.Email;
+                patient.Phone = check.Phone;
+                patient.Address = check.Address;
+                patient.BloodGroup = check.BloodGroup;
+                patient.Password = check.Password;
+                patient.Disease = check.Disease;
+                patient.Dob = check.Dob;
+                patient.Bill = totalbill;
+                var patientupdateData = DataAccessFactory.PatientDataAccess().Update(patient);
+                if (patientupdateData != null)
+                {
+                    return mapper.Map<PatientDTO>(patientupdateData);
+                }
+            }
+            
             return null;
         }
     }

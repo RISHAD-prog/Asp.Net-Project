@@ -47,7 +47,7 @@ namespace Health_Care_360_.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        [Route("api/Bed/Category/AddBeds")]
+        [Route("api/Bed/AddBeds/{Name}")]
         [HttpGet]
         public HttpResponseMessage AddBedsInCategory()
         {
@@ -60,15 +60,15 @@ namespace Health_Care_360_.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        [Route("api/Bed/Category/AddBeds")]
+        [Route("api/Bed/AddBeds/{Name}")]
         [HttpPost]
-        public HttpResponseMessage AddBedsInCategory(BedDTO beds)
+        public HttpResponseMessage AddBedsInCategory(BedDTO beds,string name)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var data = BedService.AddBedsInCategory(beds);
+                    var data = BedService.AddBedsInCategory(beds,name);
                     return Request.CreateResponse(HttpStatusCode.Accepted, data);
                 }
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "no data given");
@@ -155,6 +155,20 @@ namespace Health_Care_360_.Controllers
             try
             {
                 var data = BedAllotmentService.GetAllotment();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NoContent, ex);
+            }
+        }
+        [Route("api/Bed/Checkout/{id}")]
+        [HttpGet]
+        public HttpResponseMessage Bedcheckout(int id)
+        {
+            try
+            {
+                var data = BedService.Checkout(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)

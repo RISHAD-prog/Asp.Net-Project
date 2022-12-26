@@ -16,12 +16,23 @@ namespace BLL.Services
         {
             var config = Service.Mapping<DoctorScheduleDTO, DoctorSchedule>();
             var mapper = new Mapper(config);
-            var data = mapper.Map<DoctorSchedule>(doctor);
-            var repo = DataAccessFactory.DoctorScheduleDataAccess().Add(data);
-            if (repo != null)
+            var getdoctordata = DataAccessFactory.DoctorAuthCheckerDataAccess().GetChecker(doctor.DoctorName);
+            if(getdoctordata != null)
             {
-                return mapper.Map<DoctorScheduleDTO>(repo);
+                var schedule = new DoctorSchedule();
+                schedule.DoctorID = getdoctordata.ID;
+                schedule.DoctorName = doctor.DoctorName;
+                schedule.Qualification = getdoctordata.Qualification;
+                schedule.CheckUpTimeStart = doctor.CheckUpTimeStart;
+                schedule.CheckUpTimeEnd = doctor.CheckUpTimeEnd;
+                schedule.WeekDay=doctor.WeekDay;
+                var repo = DataAccessFactory.DoctorScheduleDataAccess().Add(schedule);
+                if (repo != null)
+                {
+                    return mapper.Map<DoctorScheduleDTO>(repo);
+                }
             }
+            
             return null;
         }
         public static List<DoctorScheduleDTO> Get()

@@ -12,16 +12,16 @@ namespace BLL.Services
 {
     public class AuthService
     {
-        public static TokenDTO Authenticate(string email, string password)
+        public static TokenDTO Authenticate(string name, string password)
         {
-            var doctor=DataAccessFactory.DoctorAuthDataAccess().Authenticate(email,password);
-            var patient = DataAccessFactory.PatientAuthDataAccess().Authenticate(email,password);
-            var staff=DataAccessFactory.StaffAuthDataAccess().Authenticate(email,password);
-            var admin=DataAccessFactory.AdminAuthDataAccess().Authenticate(email,password);
+            var doctor=DataAccessFactory.DoctorAuthDataAccess().Authenticate(name,password);
+            var patient = DataAccessFactory.PatientAuthDataAccess().Authenticate(name,password);
+            var staff=DataAccessFactory.StaffAuthDataAccess().Authenticate(name,password);
+            var admin=DataAccessFactory.AdminAuthDataAccess().Authenticate(name,password);
             if(doctor != null)
             {
                 var token = new Token();
-                token.Email = doctor.Name;
+                token.Name = doctor.Name;
                 token.TKey = Guid.NewGuid().ToString();
                 token.CreationTime = DateTime.Now;
                 token.ExpirationTime = null;
@@ -38,7 +38,7 @@ namespace BLL.Services
             else if(patient != null)
             {
                 var token = new Token();
-                token.Email = patient.Name;
+                token.Name = patient.Name;
                 token.TKey = Guid.NewGuid().ToString();
                 token.CreationTime = DateTime.Now;
                 token.ExpirationTime = null;
@@ -55,7 +55,7 @@ namespace BLL.Services
             else if (staff != null)
             {
                 var token = new Token();
-                token.Email = staff.Name;
+                token.Name = staff.Name;
                 token.TKey = Guid.NewGuid().ToString();
                 token.CreationTime = DateTime.Now;
                 token.ExpirationTime = null;
@@ -72,7 +72,7 @@ namespace BLL.Services
             else if (admin != null)
             {
                 var token = new Token();
-                token.Email = admin.Name;
+                token.Name = admin.Name;
                 token.TKey = Guid.NewGuid().ToString();
                 token.CreationTime = DateTime.Now;
                 token.ExpirationTime = null;
