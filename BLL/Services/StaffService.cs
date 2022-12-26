@@ -12,12 +12,17 @@ namespace BLL.Services
 {
     public class StaffService
     {
-        public static StaffDTO Add(StaffDTO staffDTO)
+        public static StaffDTO Add(StaffDTO staff)
         {
             
             var config = Service.Mapping<Staff,StaffDTO>();
             var mapper = new Mapper(config);
-            var staffs = mapper.Map<Staff>(staffDTO);
+            var check = DataAccessFactory.StaffAuthDataAccess().Authenticate(staff.Name, staff.Password);
+            if (check != null)
+            {
+                return null;
+            }
+            var staffs = mapper.Map<Staff>(staff);
             var data = DataAccessFactory.StaffDataAccess().Add(staffs);
             if(data!=null)
             {

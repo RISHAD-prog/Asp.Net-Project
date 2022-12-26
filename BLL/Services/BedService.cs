@@ -31,17 +31,27 @@ namespace BLL.Services
             var data = DataAccessFactory.BedListDataAccess().GetListOfId(id);
             return mapper.Map<List<BedDTO>>(data);
         }
-        public static BedDTO AddBedsInCategory(BedDTO beds)
+        public static BedDTO AddBedsInCategory(BedDTO beds,string name)
         {
             //Changes need . need to set the bed as Vacant
             var config = Service.Mapping<BedDTO, Bed>();
             var mapper = new Mapper(config);
-            var map = mapper.Map<Bed>(beds);
-            var data = DataAccessFactory.BedDataAccess().Add(map);
-            if (data != null)
+            var data = DataAccessFactory.GetBedCategoryDataAccess().Category(name);
+            if(data != null)
             {
-                return mapper.Map<BedDTO>(data);
+                var bed = new Bed();
+                bed.BedCategoryID = data.Id;
+                bed.BedCategory = name;
+                bed.BedName = beds.BedName;
+                bed.Status = "Vacant";
+                bed.BedFee = beds.BedFee;
+                var value = DataAccessFactory.BedDataAccess().Add(bed);
+                if (value != null)
+                {
+                    return mapper.Map<BedDTO>(value);
+                }
             }
+            
             return null;
         }
         public static List<BedCategoryDTO> GetCategory()
@@ -62,9 +72,10 @@ namespace BLL.Services
         {
 
             var data = DataAccessFactory.BedAllotmentDataAccess().Get(id);
+            var bednameData = DataAccessFactory.GetAllotmentOFBed().GetData(data.BedID);
             if (data != null)
             {
-                var Fee = (data.DischargeDate - data.AllotmentDate).TotalDays * 2000;
+                var Fee = (data.DischargeDate - data.AllotmentDate).TotalDays * bednameData.BedFee;
                 var bedinfo = DataAccessFactory.BedListDataAccess().GetCategory(data.BedCategory);
                 var bed = new Bed();
                 bed.Id = data.BedID;
@@ -72,10 +83,10 @@ namespace BLL.Services
                 bed.BedCategory = data.BedCategory;
                 bed.BedName = data.BedName;
                 bed.Status = "Vacant";
+                bed.BedFee = bedinfo.BedFee;
                 var config = Service.Mapping<Bed, BedDTO>();
                 var mapper = new Mapper(config);
-                var map = mapper.Map<Bed>(bed);
-                var new_data = DataAccessFactory.BedDataAccess().Update(map);
+                var new_data = DataAccessFactory.BedDataAccess().Update(bed);
                 if (new_data != null)
                 {
                     return Fee;

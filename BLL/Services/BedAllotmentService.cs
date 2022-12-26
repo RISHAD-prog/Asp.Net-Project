@@ -32,6 +32,7 @@ namespace BLL.Services
             bed.BedCategory = bedinfo.BedCategory;
             bed.BedName = bedinfo.BedName;
             bed.Status = "Occupied";
+            bed.BedFee= bedinfo.BedFee;
             BedService.EditBedStatus(bed);
             //var map = mapper.Map<BedAllotment>(entity);
             var data = DataAccessFactory.BedAllotmentDataAccess().Add(entity);

@@ -25,13 +25,13 @@ namespace DAL.Repo
 
         public Doctor Doctors(string name)
         {
-            var obj = db.Doctors.FirstOrDefault(x => x.Name.Equals(name));
-            return obj;
+           return db.Doctors.FirstOrDefault(x => x.Name.Equals(name));
+            
         }
 
         public Doctor Authenticate(string email, string password)
         {
-            var obj = db.Doctors.FirstOrDefault(x => x.Email.Equals(email) && x.Password.Equals(password));
+            var obj = db.Doctors.FirstOrDefault(x => x.Name.Equals(email) && x.Password.Equals(password));
             return obj;
         }
 

@@ -16,7 +16,12 @@ namespace BLL.Services
         {
             var config = Service.Mapping<DoctorDTO, Doctor>();
             var mapper=new Mapper(config);
+            var checkdata=DataAccessFactory.DoctorAuthDataAccess().Authenticate(doctor.Name,doctor.Password);
             var data=mapper.Map<Doctor>(doctor);
+            if (checkdata != null)
+            {
+                return null;
+            }
             var check = DataAccessFactory.DoctorAuthDataAccess().Doctors(data.Name);
             if(check == null)
             {

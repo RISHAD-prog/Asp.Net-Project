@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class BedRepo : Repo, IRepo<Bed, int, Bed>, ListofID<Bed,int>
+    internal class BedRepo : Repo, IRepo<Bed, int, Bed>, ListofID<Bed,int>,Allotment<Bed,int>
     {
         public Bed Add(Bed obj)
         {
@@ -43,6 +43,11 @@ namespace DAL.Repo
         public Bed GetCategory(string category)
         {
             return db.Beds.FirstOrDefault(X => X.BedCategory.Equals(category));
+        }
+
+        public Bed GetData(int Bedid)
+        {
+            return db.Beds.FirstOrDefault(X=>X.Id.Equals(Bedid));
         }
 
         public List<Bed> GetListOfId(int id)

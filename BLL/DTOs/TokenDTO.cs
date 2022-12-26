@@ -12,7 +12,7 @@ namespace BLL.DTOs
         public string TKey { get; set; }
         public System.DateTime CreationTime { get; set; }
         public Nullable<System.DateTime> ExpirationTime { get; set; }
-        public string Email { get; set; }
+        public string Name { get; set; }
         public string Type { get; set; }
     }
 }

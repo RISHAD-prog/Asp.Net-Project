@@ -17,7 +17,7 @@ namespace DAL.EF.Models
         public System.DateTime CreationTime { get; set; }
         public Nullable<System.DateTime> ExpirationTime { get; set; }
         [Required]
-        public string Email { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Type { get; set; }
     

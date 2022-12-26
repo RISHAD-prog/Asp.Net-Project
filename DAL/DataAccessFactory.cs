@@ -148,7 +148,18 @@ namespace DAL
         {
             return new PatientCheckUpRepo();
         }
-
+        public static BedCategory<BedCategory> GetBedCategoryDataAccess()
+        {
+            return new BedCategoryRepo();
+        }
+        public static Allotment<BedAllotment,string> GetAllotmentOFPatient()
+        {
+            return new BedAllotmentRepo();
+        }
+        public static Allotment<Bed, int> GetAllotmentOFBed()
+        {
+            return new BedRepo();
+        }
         //public static IAuth AuthDataAccess()
         //{
         //    return new UserRepo();

@@ -43,7 +43,7 @@ namespace DAL.Repo
 
         public PatientCheckUp Get(string DoctorName)
         {
-            return db.patientCheckUps.FirstOrDefault(x => x.DoctorName == DoctorName);
+            return db.patientCheckUps.FirstOrDefault(x => x.DoctorName.Equals(DoctorName));
         }
 
         public PatientCheckUp Update(PatientCheckUp obj)

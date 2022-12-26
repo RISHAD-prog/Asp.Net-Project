@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class BedCategoryRepo : Repo, IRepo<BedCategory, int, BedCategory>
+    internal class BedCategoryRepo : Repo, IRepo<BedCategory, int, BedCategory> ,BedCategory<BedCategory>
     {
         public BedCategory Add(BedCategory obj)
         {
@@ -17,6 +17,11 @@ namespace DAL.Repo
             {
                 return obj;
             }return null;
+        }
+
+        public BedCategory Category(string category)
+        {
+            return db.BedCategories.FirstOrDefault(X=>X.CategoryName.Equals(category));
         }
 
         public bool Delete(int id)

@@ -21,6 +21,8 @@ namespace DAL.EF.Models
         [Required]
         [StringLength(100)]
         public string Status { get; set; }
+        [Required]
+        public int BedFee { get; set; }
         public virtual BedCategory BedCategories { get; set; }
         public virtual List<BedAllotment> BedAllotments { get; set; }
         public Bed()

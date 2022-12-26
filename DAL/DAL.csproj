@@ -69,7 +69,9 @@
     <Compile Include="EF\Models\Staff.cs" />
     <Compile Include="EF\Models\TestList.cs" />
     <Compile Include="EF\Models\Token.cs" />
+    <Compile Include="Interfaces\Allotment.cs" />
     <Compile Include="Interfaces\AuthChecker.cs" />
+    <Compile Include="Interfaces\BedCategory.cs" />
     <Compile Include="Interfaces\BillManagement.cs" />
     <Compile Include="Interfaces\ErrorReturn.cs" />
     <Compile Include="Interfaces\ListofID.cs" />
@@ -97,6 +99,14 @@
     <Compile Include="Migrations\202212250714170_CreateTestListTables.cs" />
     <Compile Include="Migrations\202212250714170_CreateTestListTables.designer.cs">
       <DependentUpon>202212250714170_CreateTestListTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212251355525_CreateColumninToken.cs" />
+    <Compile Include="Migrations\202212251355525_CreateColumninToken.designer.cs">
+      <DependentUpon>202212251355525_CreateColumninToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212260515179_CreateBedFeeColumn.cs" />
+    <Compile Include="Migrations\202212260515179_CreateBedFeeColumn.designer.cs">
+      <DependentUpon>202212260515179_CreateBedFeeColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212250714170_CreateTestListTables.resx">
       <DependentUpon>202212250714170_CreateTestListTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212251355525_CreateColumninToken.resx">
+      <DependentUpon>202212251355525_CreateColumninToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212260515179_CreateBedFeeColumn.resx">
+      <DependentUpon>202212260515179_CreateBedFeeColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
